@@ -1,9 +1,9 @@
 import sol01_pure_python
 import sol01_pure_python_cy
-import sol01_pure_python_cy_cpdef
-import sol01_pure_python_cypp_cpdef
+import sol01_cy_cpdef
+import sol01_cypp_cpdef
+import sol01_cypp_cpdef_vector
 import sol01_numpy
-import sol01_pure_python_cypp_cpdef_wolist
 import pytest
 import time
 import numpy
@@ -11,15 +11,15 @@ import numpy
 # d = [0]*(10**8)
 # sol01_pure_python_cy.count_increases(d)
 
-@pytest.mark.benchmark(
-    group="group-name",
-    min_time=0.1,
-    max_time=0.5,
-    min_rounds=15,
-    timer=time.time,
-    disable_gc=True,
-    warmup=False
-)
+# @pytest.mark.benchmark(
+#     group="group-name",
+#     min_time=0.1,
+#     max_time=0.5,
+#     min_rounds=15,
+#     timer=time.time,
+#     disable_gc=True,
+#     warmup=False
+# )
 
 @pytest.mark.parametrize("n", [10**2, 10**4])
 def test_count_increases_pure_python(benchmark,n):
@@ -34,17 +34,17 @@ def test_count_increases_cy_01(benchmark,n):
 @pytest.mark.parametrize("n", [10**2, 10**4])
 def test_count_increases_cy_cpdef(benchmark,n):
   d = [0]*(n)
-  result = benchmark(sol01_pure_python_cy_cpdef.count_increases_cy,d )
+  result = benchmark(sol01_cy_cpdef.count_increases_cy,d )
 
 @pytest.mark.parametrize("n", [10**2, 10**4])
 def test_count_increases_cypp_cpdef(benchmark,n):
   d = [0]*(n)
-  result = benchmark(sol01_pure_python_cypp_cpdef.count_increases_cpp,d )
+  result = benchmark(sol01_cypp_cpdef.count_increases_cpp,d )
 
 @pytest.mark.parametrize("n", [10**2, 10**4])
-def test_count_increases_cypp_cpdef_wolist(benchmark,n):
+def test_count_increases_cypp_cpdef_vector(benchmark,n):
   d = [0]*(n)
-  result = benchmark(sol01_pure_python_cypp_cpdef_wolist.count_increases_cpp,d )
+  result = benchmark(sol01_cypp_cpdef_vector.count_increases_cpp,d )
 
 @pytest.mark.parametrize("n", [10**2, 10**4])
 def test_count_increases_cy_numpy(benchmark,n):
