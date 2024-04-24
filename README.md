@@ -3,3 +3,6 @@ https://www.peterbaumgartner.com/blog/intro-to-just-enough-cython-to-be-useful/
 
 to build, run command  
 python setup.py build_ext --inplace
+
+then
+pytest ./test_01.py
