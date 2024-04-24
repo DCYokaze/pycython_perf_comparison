@@ -3,6 +3,7 @@ import sol01_pure_python_cy
 import sol01_cy_cpdef
 import sol01_cypp_cpdef
 import sol01_cypp_cpdef_vector
+import sol01_cypp_cpdef_vectorn
 import sol01_numpy
 import pytest
 import time
@@ -46,6 +47,11 @@ def test_count_increases_cypp_cpdef_vector(benchmark,n):
   d = [0]*(n)
   result = benchmark(sol01_cypp_cpdef_vector.count_increases_cpp,d )
 
+@pytest.mark.parametrize("n", [10**2, 10**4])
+def test_count_increases_cypp_cpdef_vectorn(benchmark,n):
+  d = [0]*(n)
+  result = benchmark(sol01_cypp_cpdef_vectorn.count_increases_cpp,d )
+  
 @pytest.mark.parametrize("n", [10**2, 10**4])
 def test_count_increases_cy_numpy(benchmark,n):
   d = [0]*(n)

@@ -19,6 +19,6 @@ from setuptools.extension import Extension
 # ]
 setup(
     ext_modules=cythonize(
-        ["sol01_cypp_cpdef_vector.pyx", "sol01_cypp_cpdef.pyx"], compiler_directives={"language_level": "3"}
+        ["sol01_cypp_cpdef_vector.pyx", "sol01_cypp_cpdef_vectorn.pyx", "sol01_cypp_cpdef.pyx"], compiler_directives={"language_level": "3"}
     )
 )
